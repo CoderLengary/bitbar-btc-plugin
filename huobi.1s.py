@@ -24,14 +24,14 @@ def main():
     print('---')
 
 
-def fetch_symbol_of_huobi(symbol, time_frame) -> str:
+def fetch_symbol_of_huobi(symbol, time_frame):
     huobi = ccxt.huobipro()
     ohlcv = huobi.fetch_ohlcv(symbol=symbol, timeframe=time_frame, limit=1)
     data = ohlcv[0]
     close_price = data[4]
     open_price = data[1]
     percent = ((close_price - open_price) / open_price) * 100
-    return '%.2f' % percent
+    return close_price
 
 if __name__ == "__main__":
     main()
